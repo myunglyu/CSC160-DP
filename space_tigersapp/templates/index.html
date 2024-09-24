@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    .card {
+    width: 15rem;
+    margin: 1rem;
+}
+
+.card-img-top {
+    padding: 10px;
+    margin: auto;
+    width: 95%;
+}
+</style>
+
+<h1>Products</h1>
+
+<div class="d-flex flex-wrap">
+    {% for product in products %}
+        <div class="card">
+            <a href="{{ product.image_url }}"><img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.image_url }}"></a>
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.price }}</p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
