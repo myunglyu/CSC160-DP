@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import product, customer
 
 # Register your models here.
+
 class productAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'stock')
 
