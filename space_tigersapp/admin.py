@@ -8,6 +8,6 @@ class productAdmin(admin.ModelAdmin):
 admin.site.register(product)
 
 class customerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'phone')
+    list_display = ('fname', 'mi', 'lname', 'email', 'phone')
 
 admin.site.register(customer)

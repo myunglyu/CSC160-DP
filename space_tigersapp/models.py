@@ -9,7 +9,9 @@ class product(models.Model):
     image_url = models.CharField(max_length=2083)
 
 class customer(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
+    fname = models.CharField(max_length=255)
+    mi = models.CharField(max_length=1, null=True, blank=True)
+    lname = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    phone = models.CharField(max_length=10)
     image_url = models.CharField(max_length=2083)
