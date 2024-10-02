@@ -16,15 +16,17 @@
 
 <h1>Customers</h1>
 <p><a href="/newcustomer">Add New Customers</a></p>
+
 <div class="d-flex flex-wrap">
     {% for customer in customers %}
         <div class="card">
             <img src="{{ customer.image_url }}" class="card-img-top" alt="{{ customer.image_url }}">
             <div class="card-body">
-                <h5 class="customername">{{ customer.fname }} {{ customer.mi }}. {{ customer.lname }}</h5>
-                <p class="customerphone">{{ customer.phone }}</p>
-                <p class="customeremail">{{ customer.email }}</p>
-                <a href="#" class="btn btn-primary">Delete</a>
+                <h5 class="card-title">{{ customer.fname }} {{customer.mi}} {{ customer.lname }}</h5>
+                <p class="card-text">{{ customer.phone }}</p>
+                <p class="card-text">{{ customer.email }}</p>
+                <a href="/customers/{{customer.id}}/delete" class="btn btn-primary">Delete</a>
+                <a href="/customers/{{customer.id}}/update">Edit</a>
             </div>
         </div>
     {% endfor %}
