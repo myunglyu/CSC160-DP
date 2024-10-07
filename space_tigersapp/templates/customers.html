@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-
+    
 <style>
     .card {
     width: 12rem;
@@ -15,7 +15,6 @@
 </style>
 
 <h1>Customers</h1>
-<p><a href="/newcustomer">Add New Customers</a></p>
 
 <div class="d-flex flex-wrap">
     {% for customer in customers %}
@@ -25,11 +24,17 @@
                 <h5 class="card-title">{{ customer.fname }} {{customer.mi}} {{ customer.lname }}</h5>
                 <p class="card-text">{{ customer.phone }}</p>
                 <p class="card-text">{{ customer.email }}</p>
-                <a href="/customers/{{customer.id}}/delete" class="btn btn-primary">Delete</a>
-                <a href="/customers/{{customer.id}}/update">Edit</a>
+                <a href="{{customer.id}}/update" class="btn btn-secondary">Edit</a>
+                <a href="{{customer.id}}/delete" class="btn btn-danger">Delete</a>
             </div>
         </div>
     {% endfor %}
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <a href="new"><button type="button" class="btn btn-light btn-outline-dark">Add New Customers</button></a>
+    </div>
 </div>
 
 {% endblock %}

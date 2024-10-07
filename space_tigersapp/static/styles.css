@@ -1,0 +1,28 @@
+body{
+    background-image: url(body-background-image.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1{
+    color:burlywood;
+    text-align: center;
+}
+
+.navbar-brand{
+    color:white;
+    font-size: xx-large;
+}
+
+.navbar-text{
+    color:gray;
+}
+
+form label{
+    color: white;
+}
+
+#delete{
+    color:white;
+    font-size: larger;
+}
