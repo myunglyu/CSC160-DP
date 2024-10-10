@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    form{
+        color: white;
+    }
+    
+    .btn {
+        margin: 0.5rem;
+    }
+
+    #signupform{
+        padding: 2rem;
+    }
+</style>
+
+<h1>Sign Up</h2>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+    <div class="col-auto card bg-dark" id="signupform">
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'signup' %}"><button type="" class="btn btn-success">Sign Up!</button></a>
+        </form>
+    </div>
+    </div>
+</div>
+
+{% endblock %}

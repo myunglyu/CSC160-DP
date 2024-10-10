@@ -7,5 +7,6 @@ urlpatterns = [
     path('customers/new', views.newcustomer.as_view()),
     path('customers/<pk>/update', views.updatecustomer.as_view()),
     path('customers/<pk>/delete', views.deletecustomer.as_view()),
+    path("signup/", views.SignUpView.as_view(), name="signup"),
     # path('success/', views.success_view, name='success'),
 ]

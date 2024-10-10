@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    #loginform{
+        text-align: center;
+    }
+
+    .btn {
+        margin: 0.5rem;
+    }
+</style>
+
+<h1>Log In</h1>
+
+<div class="container-fluid">
+<div class="row justify-content-center">
+    <div class="col-auto" id="loginform">
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+        <a href="{% url 'signup' %}"><button type="" class="btn btn-success">Sign Up!</button></a>
+    </div>
+</div>
+</div>
+
+{% endblock %}
