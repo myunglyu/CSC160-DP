@@ -16,7 +16,7 @@
 
 <h1>Shopping Cart</h1>
 
-<div class="container">
+<div class="container justify-content-center">
     {% for product in cart_products %}
     
             <div class="card">
@@ -52,7 +52,11 @@
         
     </div>
     {% endfor %}
-    
+</div>
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <button type="button" class="btn btn-warning btn-outline-light text-black px-4 py-3">Checkout</button>
+    </div>
 </div>
 
 

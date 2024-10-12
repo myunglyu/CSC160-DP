@@ -15,8 +15,8 @@
 </style>
 
 <h1>Products</h1>
-
-<div class="d-flex flex-wrap">
+<hr class="invisible">
+<div class="d-flex flex-wrap justify-content-center">
     {% for product in products %}
         <div class="card">
             <a href="{{ product.image_url }}"><img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.image_url }}"></a>
@@ -46,7 +46,7 @@
         var productQty = $('.qty-cart[data-product-id="' + productID + '"]').val();
         $.ajax({
             type: 'POST',
-            url: '{% url 'cart_add' %}',
+            url: "{% url 'cart_add' %}",
             data: {
                 product_id: productID,
                 product_qty: productQty,

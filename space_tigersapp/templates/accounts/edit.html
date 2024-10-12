@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-8 card bg-dark text-white p-4 bg-opacity-75">
+        <h2 class="text-info text-center">Edit Your Profile</h2>
+        <hr>
+        <form method="post" class="col-auto">
+            <div class="row">
+            {% csrf_token %}
+            {{ form.as_p }}
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-info">Confirm</button>
+                </div>
+            </div>
+        </form>
+        <hr class="invisible">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a href="{% url 'profile' %}">
+                <button type="button" class="btn btn-secondary">
+                    Cancel
+                </button>
+                </a>
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="row justify-content-center">
+        <div class="col-auto">
+            <a href="{% url 'deleteaccount' %}" class="btn btn-danger">Delete Account</a>
+        </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}

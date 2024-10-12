@@ -19,4 +19,9 @@ class customerform(forms.ModelForm):
 class SignUpForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ["username", "password", "first_name", "last_name", "email"]
+        fields = ["username", "first_name", "last_name", "email"]
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["first_name", "last_name", "email"]
