@@ -15,8 +15,8 @@
 </style>
 
 <h1>Customers</h1>
-
-<div class="d-flex flex-wrap">
+<hr class="invisible">
+<div class="d-flex flex-wrap justify-content-center">
     {% for customer in customers %}
         <div class="card">
             <img src="{{ customer.image_url }}" class="card-img-top" alt="{{ customer.image_url }}">
