@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    .card {
+    width: 15rem;
+    margin: 1rem;
+}
+
+.card-img-top {
+    padding: 10px;
+    margin: auto;
+    width: 95%;
+}
+</style>
+
+<h1>Shopping Cart</h1>
+
+<div class="container justify-content-center">
+    {% for product in cart_products %}
+    
+            <div class="card">
+                <a href="{{ product.image_url }}"><img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.image_url }}"></a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">${{ product.price }}</p>
+                    <div class="col-md-">Quantity:</div>
+                <div class="col-md-4">
+                <select class="form-select form-select-sm" id="select{{product.id}}">
+
+                {% for key, value in quantities.items %}
+                    {% if key == product.id|slugify %}
+                <option selected>{{ value }}</option>
+                    {% endif %}
+                {% endfor %}
+
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                </div>
+                    
+                    
+                </div>
+
+                <button type="button" data-index="{{product.id}}" class="btn btn-secondary update-cart">Update</button>
+                <button type="button" data-index="{{product.id}}" class="btn btn-danger delete-product">Remove</button>
+
+            </div>
+        
+    </div>
+    {% endfor %}
+</div>
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <button type="button" class="btn btn-warning btn-outline-light text-black px-4 py-3">Checkout</button>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).on('click', '.update-cart', function(e){
+        e.preventDefault();
+        var productID = $(this).data('index'); // Get the value of the clicked button
+        
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'cart_update' %}',
+            data: {
+                product_id: $(this).data('index'),
+                product_qty: $('#select' + productID + ' option:selected').text(),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+    
+            success: function(json){
+                //console.log(json);
+                //document.getElementById('cart_quantity').textContent = json.qty;
+                location.reload()
+            },
+    
+            error: function(xhr, errmsg, err){
+                console.error("Error adding to cart:", errmsg);
+            }
+        });
+    });
+    </script>
+
+<script>
+    $(document).on('click', '.delete-product', function(e){
+        e.preventDefault();
+        //var productID = $(this).data('index'); // Get the value of the clicked button
+        
+        $.ajax({
+            type: 'POST',
+            url: '{% url 'cart_delete' %}',
+            data: {
+                product_id: $(this).data('index'),
+                
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
+            },
+    
+            success: function(json){
+                //console.log(json);
+                //document.getElementById('cart_quantity').textContent = json.qty;
+                location.reload()
+            },
+    
+            error: function(xhr, errmsg, err){
+                console.error("Error adding to cart:", errmsg);
+            }
+        });
+    });
+    </script>
+
+{% endblock %}

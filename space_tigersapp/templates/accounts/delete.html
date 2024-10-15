@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="text-warning text-center">Delete Account</h2>
+<hr class="invisible">
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-auto text-center text-white">
+            <p>Delete Account:</p>
+            <p>{{ user.username }}</p>
+            <p>Are you sure?</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <form method="post" class="col-auto">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-danger my-2">Confirm</button>
+        </form>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+        <a href="{% url 'profile' %}">
+        <button type="" class="btn btn-secondary my-2">Cancel</button>
+        </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

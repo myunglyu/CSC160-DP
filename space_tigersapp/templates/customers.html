@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+<style>
+    .card {
+    width: 12rem;
+    margin: 1rem;
+}
+
+.card-img-top {
+    padding: 10px;
+    margin: auto;
+    width: 95%;
+}
+</style>
+
+<h1>Customers</h1>
+<hr class="invisible">
+<div class="d-flex flex-wrap justify-content-center">
+    {% for customer in customers %}
+        <div class="card">
+            <img src="{{ customer.image_url }}" class="card-img-top" alt="{{ customer.image_url }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ customer.fname }} {{customer.mi}} {{ customer.lname }}</h5>
+                <p class="card-text">{{ customer.phone }}</p>
+                <p class="card-text">{{ customer.email }}</p>
+                <a href="{{customer.id}}/update" class="btn btn-secondary">Edit</a>
+                <a href="{{customer.id}}/delete" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <a href="new"><button type="button" class="btn btn-light btn-outline-dark">Add New Customers</button></a>
+    </div>
+</div>
+
+{% endblock %}

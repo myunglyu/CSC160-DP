@@ -1,0 +1,14 @@
+body{
+    background-image: url(/media/body-background-image.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.text-burlywood{
+    color:burlywood;
+}
+
+h1 {
+    color: burlywood;
+    text-align: center;
+}

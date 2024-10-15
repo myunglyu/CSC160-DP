@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid"></div>
+<div class="row justify-content-center">
+    <div class="col-md-8 card bg-dark text-white p-4 bg-opacity-75">
+    <h2 class="text-warning text-center">Order History</h2>
+    <hr>
+        {% include "OrderHistory.html" %}
+    </div>
+</div>
+
+<hr class="invisible">
+
+<div class="row justify-content-center">
+    <div class="col-md-8 card bg-dark text-white p-4 bg-opacity-75">
+        <h2 class="text-info text-center">Your Profile</h2>
+        <hr>
+        {% if user.profile_pic.url != Null %}
+        <p class="text-center"><img src="{{ user.profile_pic.url }}" alt="Profile Picture" class="img-thumbnail w-25 "></p>
+        {% else %}
+        <p class="text-center"><img src="/media/profile_pictures/default.png" alt="Profile Picture" class="img-thumbnail w-25 "></p>
+        {% endif %}
+        <p>Username: {{ user.username }}</p>
+        <p>First Name: {{ user.first_name }}</p>
+        <p>Last Name: {{ user.last_name }}</p>
+        <p>E-mail: {{ user.email }}</p>
+        <p>Phone Number: {{ user.phone }}</p>
+        <p>Address: {{ user.street }}, {{ user.city }}, {{ user.state }} {{ user.zip }}</p>
+
+        <hr>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+            <a href="{% url 'editprofile' %}">
+                <button class="btn btn-info m-1">
+                    Edit Account Information
+                </button>
+            </a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+            <a href="{% url 'changepassword' %}">
+            <button type="button" class="btn btn-success m-1">Change Password</button>
+            </a>
+            </div>
+        </div>
+    <!-- <div class="row justify-content-center">
+    <div class="col-auto">
+        <a href="/accounts/delete/{{ user.pk }}" class="btn btn-danger">Delete Account</a>
+    </div>
+    </div> -->
+</div>
+<hr class="invisible">
+<div class="row justify-content-center">
+<div class="col-auto">
+    <a href="/">
+    <button type="button" class="btn btn-secondary">
+        Back to Shop
+    </button>
+    </a>
+</div>
+</div>
+</div>
+
+{% endblock %}

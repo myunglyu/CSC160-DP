@@ -1,0 +1,16 @@
+<div class="row my-2 text-center">
+    <div class="col-2 text-nowrap align-self-center">Order<br>Number</div>
+    <div class="col-6 text-nowrap align-self-center">Products</div>
+    <div class="col-2 text-nowrap align-self-center">Price</div>
+    <div class="col-2 text-nowrap align-self-center">Quantity</div>
+</div>
+
+{% for order in orders %}
+    <div class="row my-1">
+        <div class="col-2 text-nowrap text-center">{{ order.OrderNumber }}</div>
+        <img src="{{ order.image_url }}" class="img-thumbnail col-1">
+        <div class="col-5 text-truncate">{{ order.ItemName }}</div>
+        <div class="col-2 text-nowrap text-end">{{ order.Price }}</div>
+        <div class="col-2 text-nowrap text-center">{{ order.Qty }}</div>
+    </div>
+{% endfor %}
