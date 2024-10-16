@@ -8,7 +8,7 @@
     <div class="col-auto">
     <p id="delete">Delete customer: {{ customer.fname }} {{ customer.lname }}?</p>
     </div>
-    <form method="post" class="col-auto">
+    <form method="post" class="col-auto text-white">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-danger">Confirm</button>

@@ -20,6 +20,7 @@
             {% if user.is_authenticated %}
             <div class="col-auto navbar-text align-self-center text-light">
                 <a href="{% url 'profile' %}">
+                    <span class="invisible" id="userpk">{{ user.id }}</span>
                     <span>Hi,
                         <strong>
                             {% if user.first_name == "" %}

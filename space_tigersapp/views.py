@@ -6,7 +6,7 @@ from django.contrib.auth.views import PasswordChangeView
 from .models import Product, customer, STUserAccount
 from .forms import SignUpForm, ProfileForm
 from django.urls import reverse_lazy
-from orders.models import OrderHistory
+from orders.models import CustomerOrders
 # from django.http import HttpResponse
 # from django.contrib.auth import authenticate, login
 
@@ -55,7 +55,7 @@ class SignUpView(CreateView):
 @login_required
 def ProfileView(request):
     # profile = STUserAccount.objects.get(id = request.user.id)
-    orders = OrderHistory.objects.filter(Customer=request.user)
+    orders = CustomerOrders.objects.filter(Customer=request.user)
     return render(request, "accounts/profile.html", {'orders': orders})
 
 class UserEditView(LoginRequiredMixin, UpdateView):

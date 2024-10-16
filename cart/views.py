@@ -3,6 +3,7 @@ from .cart import Cart
 from space_tigersapp.models import Product
 from django. http import JsonResponse
 from django.contrib import messages
+from django.shortcuts import render
 
 # Create your views here.
 
@@ -51,3 +52,4 @@ def cart_update(request):
 		#return redirect('cart_summary')
         messages.success(request, ("Your Cart Has Been Updated..."))
         return response
+
