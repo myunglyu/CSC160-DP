@@ -3,18 +3,51 @@
 
 <h1>Delete Customer</h1>
 <hr class="invisible">
-<div class="container-fluid">
+<div class="container-fluid col-md-8 card bg-dark text-white p-4 bg-opacity-75">
 <div class="row justify-content-center">
     <div class="col-auto">
     <p id="delete">Delete customer: {{ customer.fname }} {{ customer.lname }}?</p>
     </div>
-    <form method="post" class="col-auto text-white">
+    <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-danger">Confirm</button>
-        <a  href="/customers"><button type="button" class="btn btn-secondary">Cancel</button></a>
-    </form>
+        <hr class="invisible">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-danger">Confirm</button>
+            </div>
+        </div>
+        <hr class="invisible">
+        </form>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a  href="/customers"><button type="button" class="btn btn-secondary">Cancel</button></a>
+            </div>
+        </div>
 </div>
 </div>
     
 {% endblock %}
+
+<h1>Enter New Customer Details</h1>
+<hr class="invisible">
+<div class="container-fluid col-md-8 card bg-dark text-white p-4 bg-opacity-75">
+<div class="row justify-content-center">
+    <form method="post" class="col">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <hr class="invisible">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        <hr class="invisible">
+    </form>
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a  href="/customers"><button type="button" class="btn btn-secondary">Cancel</button></a>
+            </div>
+        </div>
+</div>
+</div>

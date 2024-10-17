@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid card bg-dark text-white p-4 bg-opacity-75 col-lg-6 min-width-md">
+
+<h1>Order Success</h1>
+<hr class="py-2">
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <h4>Your Order Number is</h4>
+    </div>
+</div>
+<hr class="invisible">
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <h1 class="text-info">{{ ordernumber }}</h1>
+    </div>
+</div>
+<hr class="invisible">
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <h4>Thank you for shopping with us!</h4>
+    </div>
+</div>
+<hr class="py-2">
+<div class="row justify-content-center">
+    <div class="col-auto">
+<a href="/"><button class="btn btn-primary">Back to Shopping</button></a>
+</div>
+</div>
+
+{% endblock %} 
