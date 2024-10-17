@@ -11,15 +11,15 @@
     </div>
     <div class="row py-3">
         <div class="col-6 offset-1 text-nowrap align-self-center text-center">Products</div>
-        <div class="col-2 text-nowrap align-self-center">Price</div>
-        <div class="col-2 text-nowrap align-self-center">Quantity</div>
+        <div class="col-2 text-nowrap align-self-center text-center">Price</div>
+        <div class="col-2 text-nowrap align-self-center text-center">Quantity</div>
     </div>
     {% for item in list %}
     <div class="row py-3">
         <img src="{{ item.product.image_url }}" class="img-thumbnail col-1 offset-1">
-        <div class="col-5 text-truncate">{{ item.product.name }}</div>
-        <div class="col-2 text-nowrap text-end">${{ item.product.price | floatformat:2 }}</div>
-        <div class="col-2 text-nowrap text-center">{{ item.quantity }}</div>
+        <div class="col-5 text-truncate align-self-center text-center">{{ item.product.name }}</div>
+        <div class="col-2 text-nowrap text-end align-self-center text-center">${{ item.product.price | floatformat:2 }}</div>
+        <div class="col-2 text-nowrap text-center align-self-center text-center">{{ item.quantity }}</div>
     </div>
     {% endfor %}
 
