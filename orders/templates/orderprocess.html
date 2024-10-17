@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div>
+<form method="post" id="createorder">
+{% csrf_token %}
+{{ context.order.as_p }}
+</form>
+</div>
+
+<script>
+    document.getElementById("id_Customer").value="{{ user.id }}";
+    document.getElementById("id_ShippingAddress").value="{{ context.address }}";
+    var itemset = JSON.stringify("{{ context.itemset|safe }}");
+    document.getElementById("id_ItemsOrdered").value=itemset;
+    
+    document.getElementById("createorder").submit();
+</script>
+
+{% endblock %} 

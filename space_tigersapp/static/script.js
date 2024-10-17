@@ -1,21 +1,5 @@
-document.getElementById("checkoutbtn").onclick = function(event) {
-    event.preventDefault();  // Prevent the default form submission
+// Checkout Button
 
-    var CartDetail = "";
-    var ProductIDs = document.getElementsByClassName("productID");
-    var QtyElements = document.getElementsByClassName("quantity");
-    var userpk = document.getElementById("userpk").textContent;
-
-    for (var i = 0; i < ProductIDs.length; i++) {
-        var selectedQty = QtyElements[i].value;
-        CartDetail += `${ProductIDs[i].textContent}@${selectedQty}]`;
-    }
-
-    var strCartDetail = `${userpk}%${ProductIDs.length}%${encodeURIComponent(CartDetail)}`;
-
-    document.getElementById("data").value = strCartDetail;
-    document.getElementById("checkoutForm").submit();
-}
 
 
 // function getCookie(name) {

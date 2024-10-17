@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container-fluid card bg-dark text-white p-4 bg-opacity-75">
+<div class="container-fluid card bg-dark text-white p-4 bg-opacity-75 col-lg-6 min-width-md">
 
 <h1>Order Summary</h1>
 <hr class="invisible">
@@ -14,23 +14,33 @@
     {% for item in ordersummary %}
     <div class="row flex-wrap mb-3">
         <img src="{{ item.product.image_url }}" class="img-thumbnail col-1">
-        <div class="col-5 text-truncate align-self-center">{{ item.product.name }}</div>
-        <div class="col-2 text-nowrap text-end align-self-center">{{ item.product.price | floatformat:2 }}</div>
-        <div class="col-2 text-nowrap text-center align-self-center">{{ item.quantity }}</div>
-        <div class="col-2 text-nowrap text-end align-self-center">{{ item.total | floatformat:2 }}</div>
+        <div class="col-5 text-truncate align-self-center"><input type="hidden" class="ordersummary_productID" name="ordersummary_productID" value="{{ item.product.id }}">{{ item.product.name }}</div>
+        <div class="col-2 text-nowrap text-end align-self-center">$ {{ item.product.price | floatformat:2 }}</div>
+        <div class="col-2 text-nowrap text-center align-self-center ordersummary_quantity">{{ item.quantity }}</div>
+        <div class="col-2 text-nowrap text-end align-self-center">$ {{ item.total | floatformat:2 }}</div>
     </div>
     {% endfor %}
 
 <div class="row justify-content-center">
+    <div class="col-4 text-end">Order Total:</div><div class="col-4">$ {{ ordertotal|floatformat:2 }}</div>
+</div>
+
+<hr class="invisible">
+
+<div class="row justify-content-center">
 <div class="col-auto">
-    <form id="ordersubmitform" method="post" action="ordersubmit">
+    <form id="ordersubmitform" method="post" action="{% url 'orderprocess' %}" class="text-center">
     {% csrf_token %}
-    <input type="hidden" id="data" name="data">
+    <input type="hidden" id="encoded_data" name="encoded_data" value="{{ encoded_data }}">
+    <p>
+        Shipping Address:<br>
+        <input name="address" size="50" value="{{ user.street }}, {{ user.city }}, {{ user.state }} {{ user.zip }}">
+    </p>
+    <hr class="invisible">
     <button type="submit" id="ordersubmitbtn" class="btn btn-warning p-3">Submit Order</button>
     </form>
 </div>
 </div>
 </div>
 
-
-{% endblock %}
+{% endblock %} 
