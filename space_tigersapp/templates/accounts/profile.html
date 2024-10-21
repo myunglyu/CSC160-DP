@@ -6,28 +6,47 @@
     <h2 class="text-warning text-center">Your Last Order</h2>
     <hr>
 
-    <div class="row my-2">
-        <div class="text-nowrap text-center">Order Number: <strong class="text-info">{{ orderhead.OrderNumber }}</strong></div>
-    </div>
-    <div class="row py-3">
-        <div class="col-6 offset-1 text-nowrap align-self-center text-center">Products</div>
-        <div class="col-2 text-nowrap align-self-center text-center">Price</div>
-        <div class="col-2 text-nowrap align-self-center text-center">Quantity</div>
-    </div>
-    {% for item in list %}
-    <div class="row py-3">
-        <img src="{{ item.product.image_url }}" class="img-thumbnail col-1 offset-1">
-        <div class="col-5 text-truncate align-self-center text-center">{{ item.product.name }}</div>
-        <div class="col-2 text-nowrap text-end align-self-center text-center">${{ item.product.price | floatformat:2 }}</div>
-        <div class="col-2 text-nowrap text-center align-self-center text-center">{{ item.quantity }}</div>
-    </div>
-    {% endfor %}
+    {% if orderhead != None %}
 
-    <div class="row py-3 justify-content-center">
-        <div class="col-auto">
-            Order Total: ${{ ordertotal | floatformat:2 }}
+        <div class="row my-2">
+            <div class="text-nowrap text-center">Order Number: <strong class="text-info">{{ orderhead.OrderNumber }}</strong></div>
         </div>
-    </div>
+        <div class="row my-2">
+            <div class="text-nowrap text-center">Placed at: {{ orderhead.OrderDate }} {{ orderhead.OrderDate|date:"e" }}</div>
+        </div>
+        <div class="row py-3">
+            <div class="col-6 offset-1 text-nowrap align-self-center text-center">Products</div>
+            <div class="col-2 text-nowrap align-self-center text-center">Price</div>
+            <div class="col-2 text-nowrap align-self-center text-center">Quantity</div>
+        </div>
+
+            {% for item in list %}
+            <div class="row py-3">
+                <img src="{{ item.product.image_url }}" class="img-thumbnail col-1 offset-1">
+                <div class="col-5 text-truncate align-self-center text-center">{{ item.product.name }}</div>
+                <div class="col-2 text-nowrap text-end align-self-center text-center">${{ item.product.price | floatformat:2 }}</div>
+                <div class="col-2 text-nowrap text-center align-self-center text-center">{{ item.quantity }}</div>
+            </div>
+            {% endfor %}
+
+        <div class="row py-3 justify-content-center">
+            <div class="col-auto">
+                Order Total: ${{ ordertotal | floatformat:2 }}
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="text-nowrap text-center">Shipping to:<br>{{ orderhead.ShippingAddress }}</div>
+        </div>
+        
+    {% else %}
+        
+        <div class="row my-2">
+            <div class="text-nowrap text-center">You have not placed any order yet!</div>
+        </div>
+
+
+    {% endif %}
 
 </div>
 

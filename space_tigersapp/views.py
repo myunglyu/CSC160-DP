@@ -58,32 +58,38 @@ def ProfileView(request):
     # profile = STUserAccount.objects.get(id = request.user.id)
 
     lastorder = CustomerOrders.objects.filter(Customer_id=request.user).order_by('-OrderDate').first()
-    print(lastorder)
+    # print(lastorder)
 
-    # making list of productID + Quantity
-    products = []
-    quantities = []
+    if lastorder != None:
+        # making list of productID + Quantity
+        # products = []
+        # quantities = []
 
-    orderinfo = lastorder.ItemsOrdered.replace("[", "")
-    orderinfo = orderinfo.replace(" ", "")
-    orderinfo = orderinfo.replace(",", "")
-    orderinfo = orderinfo.replace("'", "")
-    orderinfo = orderinfo.split("]")
-    orderinfo.pop()
-    orderinfo.pop()
+        orderinfo = lastorder.ItemsOrdered.replace("[", "")
+        orderinfo = orderinfo.replace(" ", "")
+        orderinfo = orderinfo.replace(",", "")
+        orderinfo = orderinfo.replace("'", "")
+        orderinfo = orderinfo.split("]")
+        orderinfo.pop()
+        orderinfo.pop()
 
-    print(orderinfo)
+        # print(orderinfo)
 
-    itemsordered_list = []
-    ordertotal = 0
+        itemsordered_list = []
+        ordertotal = 0
 
-    # working with one order detail
-    for i in range(len(orderinfo)):
-        product = Product.objects.get(id=orderinfo[i][0])
-        quantity = orderinfo[i][1]
-        ordertotal += float(product.price) * float(quantity)
-        orderdetail = {'product': product, 'quantity':quantity}
-        itemsordered_list.append(orderdetail)
+        # working with each item object, quantity, and order total
+        for i in range(len(orderinfo)):
+            product = Product.objects.get(id=orderinfo[i][0])
+            quantity = orderinfo[i][1]
+            ordertotal += float(product.price) * float(quantity)
+            orderdetail = {'product': product, 'quantity':quantity}
+            itemsordered_list.append(orderdetail)
+
+    else:
+        lastorder = None
+        itemsordered_list = None
+        ordertotal = 0
 
     context = {
         'orderhead': lastorder,
@@ -92,6 +98,8 @@ def ProfileView(request):
         # 'products': itemsordered_list,
         # 'quantities': quantities,
     }
+
+    print(context)
 
     return render(request, "accounts/profile.html", context)
 
