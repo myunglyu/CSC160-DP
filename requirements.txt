@@ -1,0 +1,19 @@
+# Core Django framework
+Django==5.1.1
+
+# Image processing for profile pictures
+Pillow==10.4.0
+
+# Database support (SQLite is included with Python, but this is for production alternatives)
+# Uncomment the following if you plan to use PostgreSQL or MySQL:
+# psycopg2-binary==2.9.9  # for PostgreSQL
+# mysqlclient==2.2.4      # for MySQL
+
+# Development and testing tools (optional)
+# django-debug-toolbar==4.4.6
+# pytest-django==4.8.0
+# coverage==7.6.1
+
+# Production deployment tools (optional)
+# gunicorn==23.0.0
+# whitenoise==6.7.0
